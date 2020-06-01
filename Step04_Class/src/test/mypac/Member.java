@@ -1,6 +1,7 @@
 package test.mypac;
 
 public class Member {
+<<<<<<< HEAD
 	//non static 필드 정의하기
 	public int num;
 	public String name;
@@ -17,3 +18,13 @@ public class Member {
 
 
 
+=======
+	public int number;
+	public String name;
+	public String addr;
+	
+	public void showInfo(){
+		System.out.println(this.number+ "|" + this.name + "|" + this.addr);
+	}
+}
+>>>>>>> refs/heads/study
