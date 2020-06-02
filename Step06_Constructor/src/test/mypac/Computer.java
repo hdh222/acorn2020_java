@@ -5,9 +5,13 @@ public class Computer {
 	public Cpu cpu;
 	
 	//생성자
+	public Computer() {
+		System.out.println("기본 생성자가 호출되었습니다.");
+	}
 	public Computer(Cpu cpu) {
 		this.cpu = cpu;
 	}
+	
 	
 	//메소드
 	public void doGame() {
