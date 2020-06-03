@@ -47,6 +47,16 @@ public class MainClass06 {
 		for(int i = 0; i < lotto.length; i++) {
 			System.out.print(lotto[i] + " ");
 		}
+		
+//		for(int i = 0; i < lotto.length; i++) {
+//			int tmp=lotto[i];
+//			System.out.println(tmp);
+//		}
+
+		//위의 주석 처리 된 내용을 간략화 시킨 반복문 
+		for(int tmp:lotto) {
+			System.out.println(tmp);
+		}
 	}
 
 }
