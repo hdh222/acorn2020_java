@@ -23,6 +23,8 @@ public class MainClass01 {
 		Object p7 = p3;
 //		String str = p3; //오류 (부모타입이 아님)
 		
+		HandPhone q1 = (HandPhone)p5;
+		
 	}
 
 }
