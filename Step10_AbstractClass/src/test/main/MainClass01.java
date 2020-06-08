@@ -4,7 +4,7 @@ import test.mypac.MyWeapon;
 import test.mypac.Weapon;
 
 /*
- *  [ 추상클래스 (Abstract Class) ]
+ *  [** 추상클래스 (Abstract Class) ]
  *  
  *  - class 예약어 앞에 abstract 를 명시해서 클래스를 정의한다.
  *  - 형태만 정의되고 실제 구현은 되지 않은 메소드가 존재할수 
