@@ -12,6 +12,7 @@ public class MainClass08 {
 			System.out.println("필드에도 들어가네요");
 		}
 	};
+	
 	//run했을 때 실행순서가 시작되는 특별한 main 메소드
 	public static void main(String[] args) {
 		//필드에 저장된 Weapon type의 참조값을 이용해서 useWeapon()메소드 호출하기

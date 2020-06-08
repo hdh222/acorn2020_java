@@ -26,6 +26,8 @@ public class MainClass02 {
 		 *  참조 값을 얻어내고 Remocon type의 지역변수 r1에 대입하기
 		 */
 		
+		MyRemocon r4 = new MyRemocon();
+		useRemocon(r4);
 		
 		Remocon r1 = new Remocon() {
 			@Override

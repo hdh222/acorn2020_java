@@ -1,6 +1,7 @@
 package test.main;
 
 import test.mypac.MyRemocon;
+import test.mypac.Power;
 import test.mypac.Remocon;
 
 public class MainClass01 {
@@ -31,11 +32,38 @@ public class MainClass01 {
 		};
 		
 		useRemocon(r3);
+		
+		Power p1 = new MyRemocon();
+		p1.on();
+		
+		Power p2 = new Power() {
+			
+			@Override
+			public void on() {
+				// TODO Auto-generated method stub
+				System.out.println("외부입력을 킨다.");
+			}
+			
+			@Override
+			public void off() {
+				// TODO Auto-generated method stub
+				System.out.println("외부입력을 끈다.");
+			}
+		};
+		p2.on();
+		p2.off();
+		
+		usePower(p1);
 	}
 	
 	public static void useRemocon(Remocon r) {
 		r.up();
 		r.down();
+	}
+	
+	public static void usePower(Power p) {
+		p.on();
+		p.off();
 	}
 }
 
