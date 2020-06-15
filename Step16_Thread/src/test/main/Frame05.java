@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -14,7 +15,38 @@ import test.mypac.CountRunnable;
 import test.mypac.CountThread;
 
 public class Frame05 extends JFrame implements ActionListener {
+	//필드
+	JLabel label_result;
+	
+	//내부클래스
+	class CountThread extends Thread{
+		@Override
+		public void run() {
+			int count = 0;
 
+			while (true) {
+
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				count++; // count를 1증가 시킨다.
+				System.out.println("현재 카운트 : " + count);
+				if (count == 10) {
+					break;
+				}
+				/*
+				 * 내부 클래스의 메소드 안에서 바깥쪽에 클래스의 필드와 메소드를 사용할 수 있다.
+				 */
+				label_result.setText(""+count);
+			}
+		}//run()
+	}//class CountThread
+	
+	//생성자
 	public Frame05() {
 		// 레이아웃설정
 		setLayout(new BorderLayout());
@@ -30,12 +62,16 @@ public class Frame05 extends JFrame implements ActionListener {
 
 		// 버튼에 리스너 등록하기
 		countBtn.addActionListener(this);
+		
+		//JLabel
+		label_result = new JLabel();
+		panel.add(label_result);
 	}
 
 	// main Thread
 	public static void main(String[] args) {
 		Frame05 frame = new Frame05();
-		frame.setTitle("Frame02");
+		frame.setTitle("Frame06");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 500, 500);
 		frame.setVisible(true);
@@ -51,51 +87,7 @@ public class Frame05 extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
-		
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				int count = 0;
-
-				while (true) {
-
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					count++; // count를 1증가 시킨다.
-					System.out.println("현재 카운트 : " + count);
-					if (count == 10) {
-						break;
-					}
-
-				}
-			}
-		}).start();
-		System.out.println("새로운 스레드를 시작합니다.");
-		
-		//람다식을 이용한 스레드
-		new Thread(()->{
-			int count = 0;
-			while (true) {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				count++; // count를 1증가 시킨다.
-				System.out.println("현재 카운트 : " + count);
-				if (count == 10) {
-					break;
-				}
-			}
-		}).start();
-		System.out.println("새로운 스레드를 시작합니다.");
+		//내부 클래스를 이용해서 스레드 객체를 생성해서 시작 시칸다.
+		new CountThread().start();
 	}
 }
-//시간이 오래걸리거나 불확실한 자료를 작업할 때 스레드를 사용한다.
