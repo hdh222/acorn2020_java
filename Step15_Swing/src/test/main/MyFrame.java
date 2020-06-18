@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class MyFrame extends JFrame{
 	public MyFrame(String title) {
 		super(title);
-		setBounds(100, 100, 500, 500);
+		setBounds(100, 10, 500, 500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
@@ -21,7 +21,7 @@ public class MyFrame extends JFrame{
 		add(btn2);
 		
 		JButton btn3 = new JButton("버튼3");
-		btn3.setSize(100,30);
+		btn3.setSize(10,30);
 		add(btn3);
 		
 		JButton btn4 = new JButton("버튼4");
