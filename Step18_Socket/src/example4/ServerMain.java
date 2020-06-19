@@ -1,4 +1,4 @@
-package example4;
+ package example4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ServerMain {
@@ -68,6 +69,20 @@ public class ServerMain {
 				tmp.bw.flush(); //방출
 			}
 		}
+		//참여자 목록을 얻어내서 Client 에게 출력해주는 메소드
+		public void sendChatNameList() {
+			JSONObject jsonObj = new JSONObject();
+			JSONArray jsonArr = new JSONArray();
+			
+			for(int i = 0; i < threadList.size();i++) {
+				ServerThread tmp = threadList.get(i);
+				jsonArr.put(i, tmp.chatName);
+			}
+			jsonObj.put("type", "members");
+			jsonObj.put("list", jsonArr);
+			
+			sendMessage(jsonObj.toString()); 
+		}
 		
 		//새로운 작업 단위가 시작되는 run() 메소드 
 		@Override
@@ -95,7 +110,6 @@ public class ServerMain {
 						//현재 스레드가 대응하는 클라이언트의 대화명을 필드에 저장한다.
 						String chatName=jsonObj.getString("name");
 						this.chatName=chatName;
-					}else if(type.equals("msg")) {
 						
 					}
 					
